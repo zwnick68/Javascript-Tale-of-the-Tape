@@ -43,19 +43,16 @@ const request = async () => {
 
     //create a search bar that accesses all fighters
     //label.innerHTML = "Choose ya fighters"
-searchInputFirstFighterFirstName.addEventListener("keypress", (element) =>{
+searchInputFirstFighterFirstName.addEventListener("submit", (element) =>{
     
     const value1 = element.target.value
-    if (element.key === "Enter"){
-    console.log("what i just typed", value1)
-    
+    console.log(value1)
         for (let i = 0; i <= res.length; i++)
         if (value1 === res[i].FirstName) 
         return fighters1.push(value1)
         //console.log("value", res[i].FirstName)
-        preventDefault()
+        // element.preventDefault()
         
-    }
 })  
 
 
@@ -69,7 +66,7 @@ searchInputFirstFighterLastName.addEventListener("keypress", (element) =>{
         if (value2 === res[i].LastName) 
         return fighters1.push(value2)
         //console.log("value", res[i].LastName)
-        preventDefault()
+        // element.preventDefault()
 
     }
 
