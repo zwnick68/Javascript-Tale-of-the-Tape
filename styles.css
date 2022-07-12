@@ -1,12 +1,9 @@
 /* cssreference.io */
 body {
-  font-family: 'monospace';
+  font-family: monospace;
   /* padding: 0; */
 }
-.taleofthetape{
-  /* width: 40%; */
-  /* padding: 12px 20px; */
-  /* margin: 8px 0; */
+.taleofthetape {
   
   box-sizing: content-box;
   border: 4px solid red;
@@ -18,17 +15,28 @@ body {
   /* padding: 50px 50px 50px; */
   height:60px; 
   width: 400px;
-  /* display: flex;
-  justify-content: center; */
-  /* width: 200px; */
   opacity: 80%;
   text-align: center; 
   font-size: 3em;
   color: black;
     margin: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.background-video {
+  width: 100vw;
+  height:100vh;
+  object-fit: cover;
+  position: fixed;
+  left:0;
+  right: 0;
+  top: 0;
+  bottom:0;
+  z-index: -1;
 }
 
 .container {
+
   display: flex;
   min-height: 100vh;
   justify-content: center;
@@ -40,50 +48,54 @@ body {
 
 .left{ 
   width:50%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  
 }
 
 .right{ 
-  width:50%; 
+  width:50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center; 
 } 
 
 .fightersearch1{
-  /* display: flex;
-  justify-content: center; */
-  /* width: 20%;
-  padding: 8px 20px;
-  margin: 8px 0; */
-  box-sizing: border-box;
-  border: 4px solid black;
-  border-radius: 4px;
-  text-align: center;
-  
 
-}
-
- .mid{
-  width:10%;
-  /* float:right; */
-
-} 
-
-
-
-.fightersearch2{
-   /* display: flex; 
-   justify-content: center;  */
-  /* width: 20%;
-  padding: 8px 20px;
-  margin: 8px 0; */
   box-sizing: border-box;
   border: 5px solid black;
   border-radius: 4px;
   text-align: center;
-  
-  
+  font-family: monospace;
+  width: 250px;
+  height: 30px;
+  margin: 2px;
+  margin-top: 10px;
+
+}
+
+.fightersearch2{
+ 
+  box-sizing: border-box;
+  border: 5px solid black;
+  border-radius: 4px;
+  text-align: center;
+  font-family: monospace;
+  width: 250px;
+  height: 30px;
+  margin: 2px;
+  margin-top: 10px;
 
 }
 
 .card {
+
   border: 20px solid black;
   border-top: 20px solid red;
   border-bottom: 20px solid red;
@@ -95,8 +107,8 @@ body {
   align-self: center;
   align-content: center;
   align-items: center;
-  width: auto;
-  height: 500px;
+  width: 400px;
+  height: 700px;
   transition: transform 0.3s, box-shadow 0.3s;
   opacity: 70%;
   
@@ -104,19 +116,20 @@ body {
 }
 
 .card > h2 {
-  font-size: 2.1em;
+  font-size: 2.8em;
   text-align: center;
-  font-weight: 200;
+  font-weight: bold;
 }
 
 .card > h3 {
-  font-size: 1.8em;
+  font-size: 2.6em;
   font-weight: 200;
   text-align: center;
   
 }
 
 .like {
+  font-family: monospace;
   font-size: 1.2em;
   /* border: 4px solid black; */
   border-radius: 4px;
@@ -126,12 +139,10 @@ body {
   
 }
 
-.background {
+/* .background {
   background-image: url("https://dmxg5wxfqgb4u.cloudfront.net/styles/gallery_collapsed_desktop_1x/s3/2018-10/GettyImages-1046278536.jpg?VersionId=dDdu.XcmvQJ9wEL0IWBRoPobgBA8IaR7&itok=tRUjtzaL");
   background-size: cover;
-  
-  
-}
+} */
 
 
 img {
@@ -141,6 +152,7 @@ img {
   height: 25% ;
   width: 25%;
 }
+
 .versus{
   display: block;
   margin-left: auto;
@@ -149,5 +161,26 @@ img {
   width: auto;
   margin-top: 150px;
   
+}
+
+.submit {
+  font-family: monospace;
+  font-size: 1.2em;
+  /* border: 4px solid black; */
+  border-radius: 4px;
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin-top: 7px;
+
+}
+
+.form {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+ 
 }
 
