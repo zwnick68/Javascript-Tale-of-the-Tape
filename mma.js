@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 let searchInputFirstFighterFirstName = document.getElementById("searchFirstFighterFirstName")
+let form1 = document.getElementById("form1")
 let searchInputFirstFighterLastName = document.getElementById("searchFirstFighterLastName")
 let searchInputSecondFighterFirstName = document.getElementById("searchSecondFighterFirstName")
 let searchInputSecondFighterLastName = document.getElementById("searchSecondFighterLastName")
@@ -18,6 +19,7 @@ let fighters1 = [];
 let fighters2 = [];
 let fighter1 = document.getElementById("fighter1")
 let fighter2 = document.getElementById("fighter2")
+let first = document.getElementById("first")
 
 let tag1 = document.getElementById("tag1")
 let tag2 = document.getElementById("tag2")
@@ -43,124 +45,143 @@ const request = async () => {
 
     //create a search bar that accesses all fighters
     //label.innerHTML = "Choose ya fighters"
-searchInputFirstFighterFirstName.addEventListener("submit", (element) =>{
-    
-    const value1 = element.target.value
-    console.log(value1)
-        for (let i = 0; i <= res.length; i++)
-        if (value1 === res[i].FirstName) 
-        return fighters1.push(value1)
-        //console.log("value", res[i].FirstName)
-        // element.preventDefault()
+    if (form1) {
         
-})  
-
-
-searchInputFirstFighterLastName.addEventListener("keypress", (element) =>{
-    
-    const value2 = element.target.value
-    if (element.key === "Enter"){
-    console.log("what i just typed", value2)
-    
-        for (let i = 0; i <= res.length; i++)
-        if (value2 === res[i].LastName) 
-        return fighters1.push(value2)
-        //console.log("value", res[i].LastName)
-        // element.preventDefault()
-
-    }
-
-    })
-
-    searchInputSecondFighterFirstName.addEventListener("keypress", (element) =>{
-    
-        const value3 = element.target.value
-        if (element.key === "Enter"){
-        console.log("what i just typed", value3)
-        
-            for (let i = 0; i <= res.length; i++)
-            if (value3 === res[i].FirstName) 
-            return fighters2.push(value3)
-            //console.log("value", res[i].LastName)
-            preventDefault()
-    
-        }
-    
-        })
-
-        searchInputSecondFighterLastName.addEventListener("keypress", (element) =>{
-    
-            const value4 = element.target.value
-            if (element.key === "Enter"){
-            console.log("what i just typed", value4)
+        form1.addEventListener('submit', (e) => {
+              e.preventDefault();
+            if (first.value === '' || first.value == null)
+                alert("cant submit nothing");
             
-                for (let i = 0; i <= res.length; i++)
-                if (value4 === res[i].LastName) 
-                return fighters2.push(value4)
-                //console.log("value", res[i].LastName)
-                preventDefault()
-        
+            for (let i = 0; i <= res.length; i++){
+            let fullname = first.value.split(" ")
+            if (fullname[0] === res[i].FirstName && fullname[1]===res[i].LastName) {
+                alert(first.value);
+                break
             }
+            else if (fullname[0] !== res[i].FirstName || fullname[1] !== res[i].LastName) {
+               alert("not found") 
+               console.log(fullname)
+               break 
+            }}
         
-            })    
+    // const value1 = element.target.value
+    // console.log(value1)
+    //     for (let i = 0; i <= res.length; i++)
+    //     if (value1 === res[i].FirstName) 
+    //     return fighters1.push(value1)
+    //     //console.log("value", res[i].FirstName)
+        
+        
+                            })  
+                                    }
 
-button1.addEventListener('click',()=>{
-    if (fighters1.length===2){
-        
-        tag1.innerHTML= fighters1[0] +" "+ fighters1[1]
-        //fighter1.append(tag1)
-
-        console.log("fighter array", fighters1)
-        for (let i = 0; i <= res.length; i++)
-        if(res[i].FirstName === fighters1[0] || res[i].LastName === fighters1[1]){
-            nickname1.innerText = res[i].Nickname
-            wins1.innerHTML = `Wins: ${res[i].Wins}`
-        Losses1.innerHTML = `Losses: ${res[i].Losses}` 
-        //stats1.innerHTML = "Losses: " + res[i].Losses
-        return console.log("it worked", res[i].Wins,res[i].Losses)
-        
-        }
-        preventDefault()
-        
-    }
-})
-
-    button2.addEventListener('click',()=>{
-        if (fighters2.length===2){
-            
-            tag2.innerHTML= fighters2[0] +" "+ fighters2[1]
-            //fighter2.append(tag2)
+// searchInputFirstFighterLastName.addEventListener("keypress", (element) =>{
     
-            console.log("fighter array", fighters2)
-            for (let i = 0; i <= res.length; i++)
-            if(res[i].FirstName === fighters2[0] || res[i].LastName === fighters2[1]){
-                nickname2.innerText = res[i].Nickname
-                wins2.innerHTML = `Wins: ${res[i].Wins}`
-            Losses2.innerHTML = `Losses: ${res[i].Losses}`
-            return console.log("it worked", res[i].Wins,res[i].Losses)
+//     const value2 = element.target.value
+//     if (element.key === "Enter"){
+//     console.log("what i just typed", value2)
+    
+//         for (let i = 0; i <= res.length; i++)
+//         if (value2 === res[i].LastName) 
+//         return fighters1.push(value2)
+//         else 
+//         alert("not on the roster")
+//         //console.log("value", res[i].LastName)
+//         // element.preventDefault()
+
+//     }
+
+//     })
+
+//     searchInputSecondFighterFirstName.addEventListener("keypress", (element) =>{
+    
+//         const value3 = element.target.value
+//         if (element.key === "Enter"){
+//         console.log("what i just typed", value3)
+        
+//             for (let i = 0; i <= res.length; i++)
+//             if (value3 === res[i].FirstName) 
+//             return fighters2.push(value3)
+//             //console.log("value", res[i].LastName)
+//             preventDefault()
+    
+//         }
+    
+//         })
+
+//         searchInputSecondFighterLastName.addEventListener("keypress", (element) =>{
+    
+//             const value4 = element.target.value
+//             if (element.key === "Enter"){
+//             console.log("what i just typed", value4)
             
-            }
-            preventDefault()
-        }
+//                 for (let i = 0; i <= res.length; i++)
+//                 if (value4 === res[i].LastName) 
+//                 return fighters2.push(value4)
+//                 //console.log("value", res[i].LastName)
+//                 preventDefault()
+        
+//             }
+        
+//             })    
 
-})
+// button1.addEventListener('click',()=>{
+//     if (fighters1.length===2){
+        
+//         tag1.innerHTML= fighters1[0] +" "+ fighters1[1]
+//         //fighter1.append(tag1)
 
-    like1.addEventListener("click", ()=>{
-        like1.innerHTML = "Likes: " + ++like1.value
-    })
+//         console.log("fighter array", fighters1)
+//         for (let i = 0; i <= res.length; i++)
+//         if(res[i].FirstName === fighters1[0] || res[i].LastName === fighters1[1]){
+//             nickname1.innerText = res[i].Nickname
+//             wins1.innerHTML = `Wins: ${res[i].Wins}`
+//         Losses1.innerHTML = `Losses: ${res[i].Losses}` 
+//         //stats1.innerHTML = "Losses: " + res[i].Losses
+//         return console.log("it worked", res[i].Wins,res[i].Losses)
+        
+//         }
+//         preventDefault()
+        
+//     }
+// })
 
-    like2.addEventListener("click", ()=>{
-        like2.innerHTML = "Likes: " + ++like2.value
-    })
+//     button2.addEventListener('click',()=>{
+//         if (fighters2.length===2){
+            
+//             tag2.innerHTML= fighters2[0] +" "+ fighters2[1]
+//             //fighter2.append(tag2)
+    
+//             console.log("fighter array", fighters2)
+//             for (let i = 0; i <= res.length; i++)
+//             if(res[i].FirstName === fighters2[0] || res[i].LastName === fighters2[1]){
+//                 nickname2.innerText = res[i].Nickname
+//                 wins2.innerHTML = `Wins: ${res[i].Wins}`
+//             Losses2.innerHTML = `Losses: ${res[i].Losses}`
+//             return console.log("it worked", res[i].Wins,res[i].Losses)
+            
+//             }
+//             preventDefault()
+//         }
+
+// })
+
+//     like1.addEventListener("click", ()=>{
+//         like1.innerHTML = "Likes: " + ++like1.value
+//     })
+
+//     like2.addEventListener("click", ()=>{
+//         like2.innerHTML = "Likes: " + ++like2.value
+//     })
 
 
 
-// let tape1 = document.createElement("div")
-// let tape2 = document.createElement("div")
+// // let tape1 = document.createElement("div")
+// // let tape2 = document.createElement("div")
 
-// tape1 = "choose ya fighter"
-// tape2 = "choose another fighter"
-// document.body.append(tape1, tape2)
+// // tape1 = "choose ya fighter"
+// // tape2 = "choose another fighter"
+// // document.body.append(tape1, tape2)
 
 }
 request()
