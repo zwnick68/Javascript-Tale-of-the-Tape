@@ -1,8 +1,8 @@
-**Hi! Simple UFC roster Tale of the Tape single Page. 
+**Hi! Simple UFC roster Tale of the Tape single Page.**
 
 Note: API that I am using has data that is wrong across the board so don't freakout when you see a fighter with insanely wrong stats!
 
-**Deployment:
+**Deployment:**
 
 clone the repository
 
@@ -10,10 +10,10 @@ clone the repository
 
 From the terminal: 
 
-**Windows/linux 
+**Windows/linux**
 
 `explorer.exe index.html`
 
-**MacOs
+**MacOs**
 
 `open index.html`
