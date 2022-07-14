@@ -4,34 +4,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
 })
 
-let searchInputFirstFighterFirstName = document.getElementById("searchFirstFighterFirstName")
 let form1 = document.getElementById("form1")
-let searchInputFirstFighterLastName = document.getElementById("searchFirstFighterLastName")
-let searchInputSecondFighterFirstName = document.getElementById("searchSecondFighterFirstName")
-let searchInputSecondFighterLastName = document.getElementById("searchSecondFighterLastName")
+let form2 = document.getElementById("form2")
 
 
-let label = document.getElementById("label")
-let button1 = document.getElementById("submitbutton1")
-let button2 = document.getElementById("submitbutton2")
-
-let fighters1 = [];
-let fighters2 = [];
-let fighter1 = document.getElementById("fighter1")
-let fighter2 = document.getElementById("fighter2")
 let first = document.getElementById("first")
-
-let tag1 = document.getElementById("tag1")
-let tag2 = document.getElementById("tag2")
-
-let wins1 = document.getElementById("wins1")
-let wins2 = document.getElementById("wins2")
-
-let Losses1 = document.getElementById("Losses1")
-let Losses2 = document.getElementById("Losses2")
-
-let nickname1 = document.getElementById("nickname1")
-let nickname2 = document.getElementById("nickname2")
+let second = document.getElementById("second")
 
 let like1 = document.getElementById("like1")
 let like2 = document.getElementById("like2")
@@ -39,149 +17,91 @@ let like2 = document.getElementById("like2")
 
 
 const request = async () => {
-    let req = await fetch("http://localhost:3000/fighters")
+    let req = await fetch("https://api.sportsdata.io/v3/mma/scores/json/Fighters?key=12dc9d6f4daf4972babba4ecf6cc9682")
     let res = await req.json()
     console.log("data confirm", res[420].FirstName)
 
-    //create a search bar that accesses all fighters
-    //label.innerHTML = "Choose ya fighters"
     if (form1) {
         
         form1.addEventListener('submit', (e) => {
               e.preventDefault();
             if (first.value === '' || first.value == null)
-                alert("cant submit nothing");
+                alert("cant submit nothin");
             
             for (let i = 0; i <= res.length; i++){
             let fullname = first.value.split(" ")
-            if (fullname[0] === res[i].FirstName && fullname[1]===res[i].LastName) {
-                alert(first.value);
+            // if (fullname[0] !== res[i].FirstName && fullname[1]!==res[i].LastName) {
+            //     alert("not found");
+            //     console.log(first.value)
+            //     break
+            // }
+            
+            if (fullname[0] === res[i].FirstName && fullname[1] === res[i].LastName) {
+                tag1.innerText = `${res[i].FirstName} ${res[i].LastName}`
+                nickname1.innerText = res[i].Nickname
+                wins1.innerHTML = `Wins: ${res[i].Wins}`
+                Losses1.innerHTML = `Losses: ${res[i].Losses}` 
+                height1.innerHTML = "Height: " + res[i].Height
+                weight1.innerHTML = "Weight: " + res[i].Weight
+                reach1.innerHTML = "Reach: " + res[i].Reach
+                weightclass1.innerHTML = "Weightclass: " + res[i].WeightClass
+                console.log("it worked", res[i].Wins,res[i].Losses)
+                console.log(first.value) 
                 break
-            }
-            else if (fullname[0] !== res[i].FirstName || fullname[1] !== res[i].LastName) {
-               alert("not found") 
-               console.log(fullname)
-               break 
             }}
-        
-    // const value1 = element.target.value
-    // console.log(value1)
-    //     for (let i = 0; i <= res.length; i++)
-    //     if (value1 === res[i].FirstName) 
-    //     return fighters1.push(value1)
-    //     //console.log("value", res[i].FirstName)
-        
+
+            // else {
+            //     alert("not found") 
+            //    break
+            // }}
         
                             })  
                                     }
 
-// searchInputFirstFighterLastName.addEventListener("keypress", (element) =>{
-    
-//     const value2 = element.target.value
-//     if (element.key === "Enter"){
-//     console.log("what i just typed", value2)
-    
-//         for (let i = 0; i <= res.length; i++)
-//         if (value2 === res[i].LastName) 
-//         return fighters1.push(value2)
-//         else 
-//         alert("not on the roster")
-//         //console.log("value", res[i].LastName)
-//         // element.preventDefault()
+    if (form2) {
 
-//     }
-
-//     })
-
-//     searchInputSecondFighterFirstName.addEventListener("keypress", (element) =>{
-    
-//         const value3 = element.target.value
-//         if (element.key === "Enter"){
-//         console.log("what i just typed", value3)
-        
-//             for (let i = 0; i <= res.length; i++)
-//             if (value3 === res[i].FirstName) 
-//             return fighters2.push(value3)
-//             //console.log("value", res[i].LastName)
-//             preventDefault()
-    
-//         }
-    
-//         })
-
-//         searchInputSecondFighterLastName.addEventListener("keypress", (element) =>{
-    
-//             const value4 = element.target.value
-//             if (element.key === "Enter"){
-//             console.log("what i just typed", value4)
+        form2.addEventListener('submit', (e) => {
+                e.preventDefault();
+            if (second.value === '' || second.value == null)
+                alert("cant submit nothin");
             
-//                 for (let i = 0; i <= res.length; i++)
-//                 if (value4 === res[i].LastName) 
-//                 return fighters2.push(value4)
-//                 //console.log("value", res[i].LastName)
-//                 preventDefault()
-        
-//             }
-        
-//             })    
-
-// button1.addEventListener('click',()=>{
-//     if (fighters1.length===2){
-        
-//         tag1.innerHTML= fighters1[0] +" "+ fighters1[1]
-//         //fighter1.append(tag1)
-
-//         console.log("fighter array", fighters1)
-//         for (let i = 0; i <= res.length; i++)
-//         if(res[i].FirstName === fighters1[0] || res[i].LastName === fighters1[1]){
-//             nickname1.innerText = res[i].Nickname
-//             wins1.innerHTML = `Wins: ${res[i].Wins}`
-//         Losses1.innerHTML = `Losses: ${res[i].Losses}` 
-//         //stats1.innerHTML = "Losses: " + res[i].Losses
-//         return console.log("it worked", res[i].Wins,res[i].Losses)
-        
-//         }
-//         preventDefault()
-        
-//     }
-// })
-
-//     button2.addEventListener('click',()=>{
-//         if (fighters2.length===2){
+            for (let i = 0; i <= res.length; i++){
+            let fullname = second.value.split(" ")
+            // if (fullname[0] !== res[i].FirstName && fullname[1]!==res[i].LastName) {
+            //     alert("not found");
+            //     console.log(first.value)
+            //     break
+            // }
             
-//             tag2.innerHTML= fighters2[0] +" "+ fighters2[1]
-//             //fighter2.append(tag2)
-    
-//             console.log("fighter array", fighters2)
-//             for (let i = 0; i <= res.length; i++)
-//             if(res[i].FirstName === fighters2[0] || res[i].LastName === fighters2[1]){
-//                 nickname2.innerText = res[i].Nickname
-//                 wins2.innerHTML = `Wins: ${res[i].Wins}`
-//             Losses2.innerHTML = `Losses: ${res[i].Losses}`
-//             return console.log("it worked", res[i].Wins,res[i].Losses)
-            
-//             }
-//             preventDefault()
-//         }
+            if (fullname[0] === res[i].FirstName && fullname[1] === res[i].LastName) {
+                tag2.innerText = `${res[i].FirstName} ${res[i].LastName}`
+                nickname2.innerText = res[i].Nickname
+                wins2.innerHTML = `Wins: ${res[i].Wins}`
+                Losses2.innerHTML = `Losses: ${res[i].Losses}` 
+                height2.innerHTML = "Height: " + res[i].Height
+                weight2.innerHTML = "Weight: " + res[i].Weight
+                reach2.innerHTML = "Reach: " + res[i].Reach
+                weightclass2.innerHTML = "Weightclass: " + res[i].WeightClass
+                console.log("it worked", res[i].Wins,res[i].Losses)
+                console.log(second.value) 
+                break
+            }}
 
-// })
+            // else {
+            //     alert("not found") 
+            //    break
+            // }}
+        
+                            })  
+                                    }
 
-//     like1.addEventListener("click", ()=>{
-//         like1.innerHTML = "Likes: " + ++like1.value
-//     })
+    like1.addEventListener("click", ()=>{
+        like1.innerHTML = "Likes: " + ++like1.value
+    })
 
-//     like2.addEventListener("click", ()=>{
-//         like2.innerHTML = "Likes: " + ++like2.value
-//     })
-
-
-
-// // let tape1 = document.createElement("div")
-// // let tape2 = document.createElement("div")
-
-// // tape1 = "choose ya fighter"
-// // tape2 = "choose another fighter"
-// // document.body.append(tape1, tape2)
+    like2.addEventListener("click", ()=>{
+        like2.innerHTML = "Likes: " + ++like2.value
+    })
 
 }
 request()
