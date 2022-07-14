@@ -6,14 +6,14 @@ Deployment:
 
 clone the repository
 
-git clone https://github.com/zwnick68/Javascript-Tale-of-the-Tape.git
+`git clone https://github.com/zwnick68/Javascript-Tale-of-the-Tape.git`
 
 From the terminal: 
 
 Windows/linux 
 
-explorer.exe index.html
+`explorer.exe index.html`
 
 MacOs
 
-open index.html
+`open index.html`
